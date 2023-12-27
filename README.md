@@ -15,14 +15,10 @@ A container is a bundle of Application, Application libraries required to run yo
 
 Containers and virtual machines are both technologies used to isolate applications and their dependencies, but they have some key differences:
 
-    1. Resource Utilization: Containers share the host operating system kernel, making them lighter and faster than VMs. VMs have a full-fledged OS and hypervisor, making them more resource-intensive.
-
-    2. Portability: Containers are designed to be portable and can run on any system with a compatible host operating system. VMs are less portable as they need a compatible hypervisor to run.
-
-    3. Security: VMs provide a higher level of security as each VM has its own operating system and can be isolated from the host and other VMs. Containers provide less isolation, as they share the host operating system.
-
-   4.  Management: Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
-
+* **Resource Utilization:** Containers share the host operating system kernel, making them lighter and faster than VMs. VMs have a full-fledged OS and hypervisor, making them more resource-intensive.
+* **Portability:** Containers are designed to be portable and can run on any system with a compatible host operating system. VMs are less portable as they need a compatible hypervisor to run.
+* **Security:** VMs provide a higher level of security as each VM has its own operating system and can be isolated from the host and other VMs. Containers provide less isolation, as they share the host operating system.
+* **Management:** Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
 
 
 ## Why are containers light weight ?
@@ -39,10 +35,8 @@ Below is the screenshot of official ubuntu base image which you can use for your
 To provide a better picture of files and folders that containers base images have and files and folders that containers use from host operating system (not 100 percent accurate -> varies from base image to base image). Refer below.
 
 
-
 ### Files and Folders in containers base images
 
-```
     /bin: contains binary executable files, such as the ls, cp, and ps commands.
 
     /sbin: contains system binary executable files, such as the init and shutdown commands.
@@ -56,25 +50,16 @@ To provide a better picture of files and folders that containers base images hav
     /var: contains variable data, such as log files, spool files, and temporary files.
 
     /root: is the home directory of the root user.
-```
-
-
 
 ### Files and Folders that containers use from host operating system
 
-```
-    The host's file system: Docker containers can access the host file system using bind mounts, which allow the container to read and write files in the host file system.
+* **The host's file system:** Docker containers can access the host file system using bind mounts, which allow the container to read and write files in the host file system.
+* **Networking stack:** The host's networking stack is used to provide network connectivity to the container. Docker containers can be connected to the host's network directly or through a virtual network.
+* **System calls:** The host's kernel handles system calls from the container, which is how the container accesses the host's resources, such as CPU, memory, and I/O.
+* **Namespaces:** Docker containers use Linux namespaces to create isolated environments for the container's processes. Namespaces provide isolation for resources such as the file system, process ID, and network.
+* **Control groups (cgroups):** Docker containers use cgroups to limit and control the amount of resources, such as CPU, memory, and I/O, that a container can access.
 
-    Networking stack: The host's networking stack is used to provide network connectivity to the container. Docker containers can be connected to the host's network directly or through a virtual network.
-
-    System calls: The host's kernel handles system calls from the container, which is how the container accesses the host's resources, such as CPU, memory, and I/O.
-
-    Namespaces: Docker containers use Linux namespaces to create isolated environments for the container's processes. Namespaces provide isolation for resources such as the file system, process ID, and network.
-
-    Control groups (cgroups): Docker containers use cgroups to limit and control the amount of resources, such as CPU, memory, and I/O, that a container can access.
     
-```
-
 It's important to note that while a container uses resources from the host operating system, it is still isolated from the host and other containers, so changes to the container do not affect the host or other containers.
 
 **Note:** There are multiple ways to reduce your VM image size as well, but I am just talking about the default for easy comparision and understanding.
